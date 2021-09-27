@@ -1,1 +1,43 @@
-Hello World
+<canvas id="canvas"></canvas>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const xlineoffset = window.innerWidth / 30;
+const ylineoffset = window.innerHeight / 30;
+ctx.canvas.width = window.innerWidth;
+ctx.canvas.height = window.innerHeight;
+
+ctx.fillStyle = 'black';
+ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+
+let cubes = 
+function drawgrid() {
+  // draw lines across x-axis
+  ctx.strokeStyle = 'white';
+  for (let x = 0; x < window.innerWidth ; x += xlineoffset){
+    ctx.beginPath();
+    ctx.moveTo(x,0);
+    ctx.lineTo(x,window.innerHeight);
+    ctx.stroke();
+    console.log(x);
+  } 
+
+  for (let y = 0; y < window.innerHeight ; y += ylineoffset){
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(window.innerWidth,y);
+    ctx.stroke();
+    console.log(y);
+  } 
+}
+
+class Cube {
+  // Cubes position is its top left corner 
+  constructor(x,y){
+    this.x = x;
+    this.y = y;
+  }
+}
+drawgrid();
+</script>
